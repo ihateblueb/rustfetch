@@ -18,6 +18,12 @@ fn main() {
                 .num_args(0)
                 .help("show start output instead"),
         )
+        .arg(
+            Arg::new("ascii")
+                .short('a')
+                .long("ascii")
+                .help("choose which ascii to show"),
+        )
         .get_matches();
 
     let sys = System::new_all();
@@ -34,13 +40,20 @@ fn main() {
 
     let os_name = sys.name().unwrap();
 
+    let mut ascii_type = "neocat".to_string();
+    if matches.get_one::<String>("ascii").is_none() {
+        ascii_type = os_name.clone();
+    } else {
+        ascii_type = matches.get_one::<String>("ascii").unwrap().to_string();
+    }
+
     let os_version = sys.os_version().unwrap();
     let kernel_version = sys.kernel_version().unwrap();
     let host = sys.host_name().unwrap();
 
     let uptime_hours = sys.uptime() / 60 / 60;
-    let uptime_minutes = (sys.uptime() / 60) 
-        - (str::parse::<u64>(uptime_hours.to_string().as_str()).unwrap() * 60);
+    let uptime_minutes =
+        (sys.uptime() / 60) - (str::parse::<u64>(uptime_hours.to_string().as_str()).unwrap() * 60);
     let uptime_seconds = (sys.uptime())
         - (str::parse::<u64>(uptime_hours.to_string().as_str()).unwrap() * 60 * 60)
         - (str::parse::<u64>(uptime_minutes.to_string().as_str()).unwrap() * 60);
@@ -63,32 +76,48 @@ fn main() {
     let cpu_count = sys.cpus().len();
 
     if mode == "default" {
-
-
-        println!("{}   ", ascii::neocat(1));
+        println!("  {}   ", ascii::get(ascii_type.clone(), 0));
+        println!("  {}   ", ascii::get(ascii_type.clone(), 1));
         println!(
-            "{}   {}{}{}",
-            ascii::neocat(2),
+            "   {}   {}{}{}",
+            ascii::get(ascii_type.clone(), 2),
             username.purple(),
             "@".white(),
             hostname.purple()
         );
-        println!("{}   ", ascii::neocat(3));
-        println!("{}   {} {os_name} {os_version}", ascii::neocat(4), "OS:".bold().purple());
-        println!("{}   {} {host}", ascii::neocat(5), "Host:".bold().purple());
-        println!("{}   {} {kernel_version}", ascii::neocat(6), "Kernel:".bold().purple());
+        println!("  {}   ", ascii::get(ascii_type.clone(), 3));
         println!(
-            "{}   {} {uptime_hours} {} {uptime_minutes} {} {uptime_seconds} {}",
-            ascii::neocat(7),
+            "   {}   {} {os_name} {os_version}",
+            ascii::get(ascii_type.clone(), 4),
+            "OS:".bold().purple()
+        );
+        println!(
+            "   {}   {} {host}",
+            ascii::get(ascii_type.clone(), 5),
+            "Host:".bold().purple()
+        );
+        println!(
+            "   {}   {} {kernel_version}",
+            ascii::get(ascii_type.clone(), 6),
+            "Kernel:".bold().purple()
+        );
+        println!(
+            "   {}   {} {uptime_hours} {} {uptime_minutes} {} {uptime_seconds} {}",
+            ascii::get(ascii_type.clone(), 7),
             "Uptime:".bold().purple(),
             "hour(s),".white(),
             "minute(s),".white(),
             "second(s)".white()
         );
-        println!("{}   {} {}", ascii::neocat(8), "Desktop:".bold().purple(), de);
         println!(
-            "{}   {} {} {}{}{}",
-            ascii::neocat(9),
+            "   {}   {} {}",
+            ascii::get(ascii_type.clone(), 8),
+            "Desktop:".bold().purple(),
+            de
+        );
+        println!(
+            "   {}   {} {} {}{}{}",
+            ascii::get(ascii_type.clone(), 9),
             "CPU:".bold().purple(),
             cpu,
             "(".white(),
@@ -96,26 +125,25 @@ fn main() {
             ")".white()
         );
         println!(
-            "{}   {} {mem_used}{} of {mem_total}{} used",
-            ascii::neocat(10),
+            "   {}   {} {mem_used}{} of {mem_total}{} used",
+            ascii::get(ascii_type.clone(), 10),
             "Memory:".bold().purple(),
             "mb".white(),
             "mb".white()
         );
         println!(
-            "{}   {} {swap_used}{} of {swap_total}{} used",
-            ascii::neocat(11),
+            "   {}   {} {swap_used}{} of {swap_total}{} used",
+            ascii::get(ascii_type.clone(), 11),
             "Swap:".bold().purple(),
             "mb".white(),
             "mb".white()
         );
-        println!("{}   ", ascii::neocat(12),);
-        println!("{}   ", ascii::neocat(13),);
-        println!("{}   ", ascii::neocat(14),);
-        println!("{}   ", ascii::neocat(15),);
-        println!("{}   ", ascii::neocat(16),);
-
-
+        println!("  {}   ", ascii::get(ascii_type.clone(), 12),);
+        println!("  {}   ", ascii::get(ascii_type.clone(), 13),);
+        println!("  {}   ", ascii::get(ascii_type.clone(), 14),);
+        println!("  {}   ", ascii::get(ascii_type.clone(), 15),);
+        println!("  {}   ", ascii::get(ascii_type.clone(), 16),);
+        println!("  {}   ", ascii::get(ascii_type.clone(), 17),);
     } else if mode == "start" {
         println!("  ");
         println!(
