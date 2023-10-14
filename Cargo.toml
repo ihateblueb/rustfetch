@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 colored="2.0.4"
 sysinfo="0.29.10"
+whoami="1.4.1"
