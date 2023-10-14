@@ -76,8 +76,8 @@ fn main() {
     let cpu_count = sys.cpus().len();
 
     if mode == "default" {
-        println!("  {}   ", ascii::get(ascii_type.clone(), 0));
-        println!("  {}   ", ascii::get(ascii_type.clone(), 1));
+        println!("   {}   ", ascii::get(ascii_type.clone(), 0));
+        println!("   {}   ", ascii::get(ascii_type.clone(), 1));
         println!(
             "   {}   {}{}{}",
             ascii::get(ascii_type.clone(), 2),
@@ -85,7 +85,7 @@ fn main() {
             "@".white(),
             hostname.purple()
         );
-        println!("  {}   ", ascii::get(ascii_type.clone(), 3));
+        println!("   {}   ", ascii::get(ascii_type.clone(), 3));
         println!(
             "   {}   {} {os_name} {os_version}",
             ascii::get(ascii_type.clone(), 4),
@@ -138,12 +138,34 @@ fn main() {
             "mb".white(),
             "mb".white()
         );
-        println!("  {}   ", ascii::get(ascii_type.clone(), 12),);
-        println!("  {}   ", ascii::get(ascii_type.clone(), 13),);
-        println!("  {}   ", ascii::get(ascii_type.clone(), 14),);
-        println!("  {}   ", ascii::get(ascii_type.clone(), 15),);
-        println!("  {}   ", ascii::get(ascii_type.clone(), 16),);
-        println!("  {}   ", ascii::get(ascii_type.clone(), 17),);
+        println!("   {}   ", ascii::get(ascii_type.clone(), 12),);
+        println!(
+            "   {}   {}{}{}{}{}{}{}{}",
+            ascii::get(ascii_type.clone(), 13),
+            "███".black(),
+            "███".red(),
+            "███".yellow(),
+            "███".green(),
+            "███".cyan(),
+            "███".blue(),
+            "███".purple(),
+            "███".white()
+        );
+        println!(
+            "   {}   {}{}{}{}{}{}{}{}",
+            ascii::get(ascii_type.clone(), 14),
+            "███".bright_black(),
+            "███".bright_red(),
+            "███".bright_yellow(),
+            "███".bright_green(),
+            "███".bright_cyan(),
+            "███".bright_blue(),
+            "███".bright_purple(),
+            "███".bright_white()
+        );
+        println!("   {}   ", ascii::get(ascii_type.clone(), 15),);
+        println!("   {}   ", ascii::get(ascii_type.clone(), 16),);
+        println!("   {}   ", ascii::get(ascii_type.clone(), 17),);
     } else if mode == "start" {
         println!("  ");
         println!(

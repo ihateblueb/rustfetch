@@ -61,7 +61,7 @@ pub fn neocat(line: i32) -> ColoredString {
     } else if line == 11 {
         return format!(" 00kdoKKk'{}x0KKKkox0KKK0     ", ";.;;.:::".red()).bold().yellow();
     } else if line == 12 {
-        return format!(" cxxOKKKK0Od{}O0KKKKKKK0kdoOKO     ", "c:o".red()).bold().yellow();
+        return format!("  cxxOKKKK0Od{}O0KKKKKKK0kdoOKO     ", "c:o".red()).bold().yellow();
     } else if line == 13 {
         return "  ,kKKKKKKKKKKKKKKKKKKKKKKKKKO'     ".bold().yellow()
     } else if line == 14 {
@@ -124,11 +124,11 @@ pub fn ubuntu(line: i32) -> ColoredString {
     } else if line == 12 {
         return format!("  ,;;;;;;;;{};;;;;;;;;,  ", "o0NdkMMMMMMMW0KKKx".white()).bold().truecolor(233, 84, 32)
     } else if line == 13 {
-        return format!("   ';;;;;;;;;;:{};;;;;;;'   ", "xO0KKKK0lNMMMMk".white()).bold().truecolor(233, 84, 32);
+        return format!("   ';;;;;;;;;;:{};;;;;;;'  ", "xO0KKKK0lNMMMMk".white()).bold().truecolor(233, 84, 32);
     } else if line == 14 {
-        return format!("     ';;;;;;;;;;;;;;;;;;{};;;;;;'     ", "dKNN0c".white()).bold().truecolor(233, 84, 32);
+        return format!("     ';;;;;;;;;;;;;;;;;;{};;;;;;'   ", "dKNN0c".white()).bold().truecolor(233, 84, 32);
     } else if line == 15 {
-        return "       .',;;;;;;;;;;;;;;;;;;;;;,'.       ".bold().truecolor(233, 84, 32)
+        return "       .',;;;;;;;;;;;;;;;;;;;;;,'.      ".bold().truecolor(233, 84, 32)
     } else if line == 16 {
         return "           ..',,;;;;;;;;;;,,'..           ".bold().truecolor(233, 84, 32)
     } else if line == 17 {
