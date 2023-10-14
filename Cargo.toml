@@ -1,5 +1,7 @@
 [package]
 name = "rustfetch"
+description = "a simple neofetch-like cli program"
+author = "blueb"
 version = "0.1.0"
 edition = "2021"
 
@@ -9,3 +11,4 @@ edition = "2021"
 colored="2.0.4"
 sysinfo="0.29.10"
 whoami="1.4.1"
+clap="4.4.6"
