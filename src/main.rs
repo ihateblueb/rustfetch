@@ -1,11 +1,11 @@
 use colored::Colorize;
-use percentage::Percentage;
 use sysinfo::{NetworkExt, NetworksExt, ProcessExt, System, SystemExt};
 
 fn main() {
     let mut sys = System::new_all();
 
     let mut username = "e";
+    let mut hostname = "localhost";
 
     let mut os_name = sys.name().unwrap();
     let mut os_version = sys.os_version().unwrap();
