@@ -42,7 +42,7 @@ fn main() {
 
     let mut ascii_type = "neocat".to_string();
     if matches.get_one::<String>("ascii").is_none() {
-        ascii_type = os_name.clone();
+        ascii_type = "neocat".to_string();
     } else {
         ascii_type = matches.get_one::<String>("ascii").unwrap().to_string();
     }
