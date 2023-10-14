@@ -33,12 +33,14 @@ fn main() {
     let hostname = whoami::hostname();
 
     let os_name = sys.name().unwrap();
+
     let os_version = sys.os_version().unwrap();
     let kernel_version = sys.kernel_version().unwrap();
     let host = sys.host_name().unwrap();
+
     let uptime_hours = sys.uptime() / 60 / 60;
-    let uptime_minutes =
-        (sys.uptime() / 60) - (str::parse::<u64>(uptime_hours.to_string().as_str()).unwrap() * 60);
+    let uptime_minutes = (sys.uptime() / 60) 
+        - (str::parse::<u64>(uptime_hours.to_string().as_str()).unwrap() * 60);
     let uptime_seconds = (sys.uptime())
         - (str::parse::<u64>(uptime_hours.to_string().as_str()).unwrap() * 60 * 60)
         - (str::parse::<u64>(uptime_minutes.to_string().as_str()).unwrap() * 60);
@@ -61,27 +63,32 @@ fn main() {
     let cpu_count = sys.cpus().len();
 
     if mode == "default" {
-        println!("   ");
+
+
+        println!("{}   ", ascii::neocat(1));
         println!(
-            "   {}{}{}",
+            "{}   {}{}{}",
+            ascii::neocat(2),
             username.purple(),
             "@".white(),
             hostname.purple()
         );
-        println!("   ");
-        println!("   {} {os_name} {os_version}", "OS:".bold().purple());
-        println!("   {} {host}", "Host:".bold().purple());
-        println!("   {} {kernel_version}", "Kernel:".bold().purple());
+        println!("{}   ", ascii::neocat(3));
+        println!("{}   {} {os_name} {os_version}", ascii::neocat(4), "OS:".bold().purple());
+        println!("{}   {} {host}", ascii::neocat(5), "Host:".bold().purple());
+        println!("{}   {} {kernel_version}", ascii::neocat(6), "Kernel:".bold().purple());
         println!(
-            "   {} {uptime_hours} {} {uptime_minutes} {} {uptime_seconds} {}",
+            "{}   {} {uptime_hours} {} {uptime_minutes} {} {uptime_seconds} {}",
+            ascii::neocat(7),
             "Uptime:".bold().purple(),
             "hour(s),".white(),
             "minute(s),".white(),
             "second(s)".white()
         );
-        println!("   {} {}", "Desktop:".bold().purple(), de);
+        println!("{}   {} {}", ascii::neocat(8), "Desktop:".bold().purple(), de);
         println!(
-            "   {} {} {}{}{}",
+            "{}   {} {} {}{}{}",
+            ascii::neocat(9),
             "CPU:".bold().purple(),
             cpu,
             "(".white(),
@@ -89,18 +96,26 @@ fn main() {
             ")".white()
         );
         println!(
-            "   {} {mem_used}{} of {mem_total}{} used",
+            "{}   {} {mem_used}{} of {mem_total}{} used",
+            ascii::neocat(10),
             "Memory:".bold().purple(),
             "mb".white(),
             "mb".white()
         );
         println!(
-            "   {} {swap_used}{} of {swap_total}{} used",
+            "{}   {} {swap_used}{} of {swap_total}{} used",
+            ascii::neocat(11),
             "Swap:".bold().purple(),
             "mb".white(),
             "mb".white()
         );
-        println!("   ");
+        println!("{}   ", ascii::neocat(12),);
+        println!("{}   ", ascii::neocat(13),);
+        println!("{}   ", ascii::neocat(14),);
+        println!("{}   ", ascii::neocat(15),);
+        println!("{}   ", ascii::neocat(16),);
+
+
     } else if mode == "start" {
         println!("  ");
         println!(
